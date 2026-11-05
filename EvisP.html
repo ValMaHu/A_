@@ -42,118 +42,157 @@
       z-index: -1;
     }
 
-    /* ESTILOS DEL CASSETTE */
+    /* --- DISEÑO DE CASSETTE REALISTA --- */
     .cassette {
-      background: #2b2b2b;
+      background: linear-gradient(135deg, #2c2c2c, #1a1a1a);
       width: 100%;
-      max-width: 350px;
-      padding: 20px 20px 15px 20px;
+      max-width: 360px;
+      padding: 16px;
       border-radius: 16px;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 2px 3px rgba(255,255,255,0.1);
       position: relative;
-      border: 3px solid #1a1a1a;
+      border: 3px solid #111;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
-    /* Etiqueta blanca adhesiva del cassette */
+    /* Tornillos en las esquinas */
+    .screw {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: radial-gradient(circle, #ccc 40%, #666 70%);
+      border-radius: 50%;
+      box-shadow: inset 0 1px 2px rgba(0,0,0,0.6);
+    }
+    .screw-tl { top: 8px; left: 8px; }
+    .screw-tr { top: 8px; right: 8px; }
+    .screw-bl { bottom: 8px; left: 8px; }
+    .screw-br { bottom: 8px; right: 8px; }
+
+    /* Etiqueta adhesiva central */
     .cassette-label {
-      background: #ffffff;
+      background: #fcfbf7;
       width: 100%;
-      padding: 15px;
-      border-radius: 8px;
-      border: 2px solid #e0e0e0;
+      padding: 14px 16px;
+      border-radius: 10px;
+      border: 1px solid #dcd8cc;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       position: relative;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
     }
 
-    /* Línea decorativa estilo retro */
+    /* Franja superior decorativa */
     .cassette-label::before {
       content: "";
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
-      height: 6px;
+      height: 8px;
       background: linear-gradient(90deg, #ff758c, #ff7eb3, #4a90e2);
-      border-top-left-radius: 6px;
-      border-top-right-radius: 6px;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+
+    .label-header {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      font-size: 0.75rem;
+      color: #888;
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin-top: 4px;
     }
 
     h1 {
-      color: #333;
-      font-size: 1.3rem;
-      margin: 5px 0 0 0;
+      color: #222;
+      font-size: 1.35rem;
+      margin: 0;
       width: 100%;
       text-align: center;
-      font-weight: 700;
+      font-weight: 800;
     }
 
     .subtitle {
-      color: #666;
+      color: #555;
       font-size: 0.95rem;
-      margin: -8px 0 0 0;
+      margin: -4px 0 0 0;
       width: 100%;
       text-align: center;
       font-weight: 600;
     }
 
-    /* Ventana transparente con carretes de cinta */
+    /* Ventana del cassette con cinta magnética */
     .cassette-window {
-      background: #111;
-      width: 85%;
-      height: 55px;
-      border-radius: 25px;
+      background: #0d0d0d;
+      width: 90%;
+      height: 60px;
+      border-radius: 20px;
       display: flex;
       align-items: center;
-      justify-content: space-around;
-      padding: 0 15px;
-      border: 2px solid #444;
+      justify-content: space-between;
+      padding: 0 20px;
+      border: 2px solid #333;
       position: relative;
+      box-shadow: inset 0 4px 8px rgba(0,0,0,0.8);
       overflow: hidden;
     }
 
-    /* Cinta magnética en el fondo de la ventana */
-    .cassette-window::after {
-      content: "";
+    /* Franja de cinta magnética pasando por detrás */
+    .tape-strip {
       position: absolute;
-      width: 40%;
-      height: 100%;
-      background: #3a2312;
+      width: 100%;
+      height: 18px;
+      background: #362114;
+      top: 50%;
+      transform: translateY(-50%);
       z-index: 1;
+      border-top: 1px solid #543320;
+      border-bottom: 1px solid #20130a;
     }
 
-    /* Ruedas/Carretes del cassette */
-    .wheel {
-      width: 36px;
-      height: 36px;
-      background: #ffffff;
+    /* Carretes detallados */
+    .reel {
+      width: 40px;
+      height: 40px;
+      background: #e8e8e8;
       border-radius: 50%;
-      border: 4px solid #888;
+      border: 4px solid #777;
       position: relative;
       z-index: 2;
       display: flex;
       align-items: center;
       justify-content: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
     }
 
-    /* Dientes de la rueda interna */
-    .wheel::before {
+    .reel::before {
       content: "";
-      width: 12px;
-      height: 12px;
-      background: #2b2b2b;
+      width: 16px;
+      height: 16px;
+      background: #1a1a1a;
       border-radius: 50%;
-      box-shadow: inset 0 0 0 2px #fff;
+      border: 3px solid #bbb;
+      z-index: 3;
     }
 
-    /* Animación de giro para las ruedas al reproducir */
+    .reel-teeth {
+      position: absolute;
+      width: 26px;
+      height: 26px;
+      border: 2px dashed #999;
+      border-radius: 50%;
+    }
+
+    /* Animación de giro */
     .spinning {
-      animation: spin 2.5s linear infinite;
+      animation: spin 2s linear infinite;
     }
 
     @keyframes spin {
@@ -161,33 +200,37 @@
       100% { transform: rotate(360deg); }
     }
 
-    /* Zona inferior trapezoidal típica de cassettes */
+    /* Zona inferior trapezoidal del cabezal */
     .cassette-bottom {
-      width: 70%;
-      height: 25px;
-      background: #202020;
-      margin-top: 10px;
-      clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
+      width: 75%;
+      height: 30px;
+      background: linear-gradient(180deg, #181818, #282828);
+      margin-top: 8px;
+      clip-path: polygon(12% 0%, 88% 0%, 100% 100%, 0% 100%);
       display: flex;
-      justify-content: space-around;
-      align-items: center;
+      justify-content: center;
+      align-items: flex-end;
+      padding-bottom: 5px;
+      gap: 15px;
+      border-top: 1px solid #444;
     }
 
-    .screw {
-      width: 6px;
-      height: 6px;
-      background: #777;
-      border-radius: 50%;
+    .bottom-notch {
+      width: 12px;
+      height: 8px;
+      background: #111;
+      border-radius: 2px;
     }
 
-    /* Texto de instrucción flotante */
+    /* Texto de instrucción */
     .instruction {
       font-size: 0.85rem;
-      color: #ff4757;
+      color: #d81b60;
       font-weight: 700;
-      margin: 5px 0 0 0;
+      margin: 6px 0 0 0;
       animation: pulse 1.5s infinite;
       text-align: center;
+      width: 100%;
     }
 
     @keyframes pulse {
@@ -198,7 +241,7 @@
 
     audio {
       width: 100%;
-      margin-top: 8px;
+      margin-top: 10px;
       display: none;
       pointer-events: auto;
     }
@@ -206,28 +249,44 @@
 </head>
 <body>
 
-  <!-- Estructura del Cassette -->
   <div class="cassette">
+    <!-- Tornillos decorativos -->
+    <div class="screw screw-tl"></div>
+    <div class="screw screw-tr"></div>
+    <div class="screw screw-bl"></div>
+    <div class="screw screw-br"></div>
+
     <div class="cassette-label">
+      <div class="label-header">
+        <span>SIDE A</span>
+        <span>STEREO</span>
+        <span>C-60</span>
+      </div>
+
       <h1>Para ti 🎶</h1>
       <p class="subtitle">De parte de Evis 💙</p>
       
-      <!-- Ventana transparente con carretes -->
+      <!-- Ventana transparente con cinta y carretes -->
       <div class="cassette-window">
-        <div class="wheel" id="wheel1"></div>
-        <div class="wheel" id="wheel2"></div>
+        <div class="tape-strip"></div>
+        <div class="reel" id="wheel1">
+          <div class="reel-teeth"></div>
+        </div>
+        <div class="reel" id="wheel2">
+          <div class="reel-teeth"></div>
+        </div>
       </div>
 
       <p class="instruction" id="instructionText">✨ Toca en cualquier parte para reproducir ✨</p>
     </div>
 
-    <!-- Base trapezoidal con tornillos decorativos -->
+    <!-- Base trapezoidal -->
     <div class="cassette-bottom">
-      <div class="screw"></div>
-      <div class="screw"></div>
+      <div class="bottom-notch"></div>
+      <div class="bottom-notch"></div>
     </div>
 
-    <!-- Reproductor de audio oculto hasta tocar -->
+    <!-- Reproductor de audio oculto -->
     <audio id="audioPlayer" controls>
       <source src="audios/Evis.mp3" type="audio/mpeg">
       Tu navegador no soporta el elemento de audio.
@@ -245,7 +304,6 @@
         instructionText.style.display = 'none';
         audio.style.display = 'block';
         
-        // Activa el giro de las ruedas del cassette
         wheel1.classList.add('spinning');
         wheel2.classList.add('spinning');
         
@@ -256,7 +314,6 @@
       });
     }
 
-    // Si el usuario pausa o despausa el audio desde los controles del navegador
     audio.addEventListener('play', () => {
       wheel1.classList.add('spinning');
       wheel2.classList.add('spinning');
