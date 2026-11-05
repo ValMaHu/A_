@@ -4,51 +4,314 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>De parte de Carlos 💙</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎂</text></svg>">
+  
   <style>
+    * {
+      box-sizing: border-box;
+    }
     body {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
-      background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+      min-height: 100vh;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       text-align: center;
       margin: 0;
+      padding: 20px;
+      cursor: pointer;
+      position: relative;
+      background-color: #fdf2f4;
+      overflow: hidden;
     }
-    .card {
-      background: white;
-      padding: 2.5rem;
-      border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-      max-width: 90%;
+
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('fondo.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.3;
+      z-index: -1;
+    }
+
+    .cassette {
+      background: linear-gradient(135deg, #2c2c2c, #1a1a1a);
+      width: 100%;
+      max-width: 360px;
+      padding: 16px;
+      border-radius: 16px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 2px 3px rgba(255,255,255,0.1);
+      position: relative;
+      border: 3px solid #111;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 15px;
     }
-    h1 { color: #333; font-size: 1.5rem; margin: 0; }
-    p { color: #666; font-size: 1rem; margin: 0; }
-    
-    /* Estilo para que el reproductor se vea integrado y bonito */
+
+    .screw {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: radial-gradient(circle, #ccc 40%, #666 70%);
+      border-radius: 50%;
+      box-shadow: inset 0 1px 2px rgba(0,0,0,0.6);
+    }
+    .screw-tl { top: 8px; left: 8px; }
+    .screw-tr { top: 8px; right: 8px; }
+    .screw-bl { bottom: 8px; left: 8px; }
+    .screw-br { bottom: 8px; right: 8px; }
+
+    .cassette-label {
+      background: #f4efe6;
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 10px;
+      border: 1px solid #dcd3c4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .cassette-label::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 8px;
+      background: linear-gradient(90deg, #ff758c, #ff7eb3, #4a90e2);
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+
+    .label-header {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      font-size: 0.75rem;
+      color: #888;
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin-top: 4px;
+    }
+
+    h1 {
+      color: #222;
+      font-size: 1.35rem;
+      margin: 0;
+      width: 100%;
+      text-align: center;
+      font-weight: 800;
+    }
+
+    .subtitle {
+      color: #555;
+      font-size: 0.95rem;
+      margin: -4px 0 0 0;
+      width: 100%;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .cassette-window {
+      background: #0d0d0d;
+      width: 90%;
+      height: 60px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      border: 2px solid #333;
+      position: relative;
+      box-shadow: inset 0 4px 8px rgba(0,0,0,0.8);
+      overflow: hidden;
+    }
+
+    .tape-strip {
+      position: absolute;
+      width: 100%;
+      height: 18px;
+      background: #362114;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1;
+      border-top: 1px solid #543320;
+      border-bottom: 1px solid #20130a;
+    }
+
+    .reel {
+      width: 40px;
+      height: 40px;
+      background: #e8e8e8;
+      border-radius: 50%;
+      border: 4px solid #777;
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .reel::before {
+      content: "";
+      width: 16px;
+      height: 16px;
+      background: #1a1a1a;
+      border-radius: 50%;
+      border: 3px solid #bbb;
+      z-index: 3;
+    }
+
+    .reel-teeth {
+      position: absolute;
+      width: 26px;
+      height: 26px;
+      border: 2px dashed #999;
+      border-radius: 50%;
+    }
+
+    .spinning {
+      animation: spin 2s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .cassette-bottom {
+      width: 75%;
+      height: 30px;
+      background: linear-gradient(180deg, #181818, #282828);
+      margin-top: 8px;
+      clip-path: polygon(12% 0%, 88% 0%, 100% 100%, 0% 100%);
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      padding-bottom: 5px;
+      gap: 15px;
+      border-top: 1px solid #444;
+    }
+
+    .bottom-notch {
+      width: 12px;
+      height: 10px;
+      background: #111;
+      border-radius: 2px;
+    }
+
+    .instruction {
+      font-size: 0.85rem;
+      color: #d81b60;
+      font-weight: 700;
+      margin: 6px 0 0 0;
+      animation: pulse 1.5s infinite;
+      text-align: center;
+      width: 100%;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.5; }
+      50% { opacity: 1; }
+      100% { opacity: 0.5; }
+    }
+
     audio {
       width: 100%;
       margin-top: 10px;
+      display: none;
+      pointer-events: auto;
     }
   </style>
 </head>
 <body>
 
-  <div class="card">
-    <h1>Para ti 🎶</h1>
-    <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; De parte de Carlos &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</p>
-    
-    <!-- Agregamos el atributo "controls" aquí -->
-    <audio controls autoplay>
-      <source src="audios/Carlos.mp3" type="audio/ogg">
+  <div class="cassette">
+    <div class="screw screw-tl"></div>
+    <div class="screw screw-tr"></div>
+    <div class="screw screw-bl"></div>
+    <div class="screw screw-br"></div>
+
+    <div class="cassette-label">
+      <div class="label-header">
+        <span>SIDE A</span>
+        <span>STEREO</span>
+        <span>C-60</span>
+      </div>
+
+      <h1>Para ti 🎶</h1>
+      <p class="subtitle">De parte de Carlos</p>
+      
+      <div class="cassette-window">
+        <div class="tape-strip"></div>
+        <div class="reel" id="wheel1">
+          <div class="reel-teeth"></div>
+        </div>
+        <div class="reel" id="wheel2">
+          <div class="reel-teeth"></div>
+        </div>
+      </div>
+
+      <p class="instruction" id="instructionText">✨ Toca para reproducir ✨</p>
+    </div>
+
+    <div class="cassette-bottom">
+      <div class="bottom-notch"></div>
+      <div class="bottom-notch"></div>
+    </div>
+
+    <audio id="audioPlayer" controls>
+      <source src="audios/Carlos.mp3" type="audio/mpeg">
       Tu navegador no soporta el elemento de audio.
     </audio>
   </div>
+
+  <script>
+    const audio = document.getElementById('audioPlayer');
+    const instructionText = document.getElementById('instructionText');
+    const wheel1 = document.getElementById('wheel1');
+    const wheel2 = document.getElementById('wheel2');
+
+    function activarAudio() {
+      audio.play().then(() => {
+        instructionText.style.display = 'none';
+        audio.style.display = 'block';
+        
+        wheel1.classList.add('spinning');
+        wheel2.classList.add('spinning');
+        
+        document.removeEventListener('click', activarAudio);
+        document.removeEventListener('touchstart', activarAudio);
+      }).catch(error => {
+        console.log("Esperando interacción del usuario...", error);
+      });
+    }
+
+    audio.addEventListener('play', () => {
+      wheel1.classList.add('spinning');
+      wheel2.classList.add('spinning');
+    });
+
+    audio.addEventListener('pause', () => {
+      wheel1.classList.remove('spinning');
+      wheel2.classList.remove('spinning');
+    });
+
+    document.addEventListener('click', activarAudio);
+    document.addEventListener('touchstart', activarAudio);
+  </script>
 
 </body>
 </html>
