@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>De parte de Evis 💙</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎂</text></svg>">
+  
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+      cursor: pointer;
+      position: relative;
+      background-color: #fdf2f4;
+      overflow: hidden;
+    }
+
+    /* Fondo de corazones con opacidad ajustable */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('fondo.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.3;
+      z-index: -1;
+    }
+
+    /* ESTILOS DEL CASSETTE */
+    .cassette {
+      background: #2b2b2b;
+      width: 100%;
+      max-width: 350px;
+      padding: 20px 20px 15px 20px;
+      border-radius: 16px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+      position: relative;
+      border: 3px solid #1a1a1a;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Etiqueta blanca adhesiva del cassette */
+    .cassette-label {
+      background: #ffffff;
+      width: 100%;
+      padding: 15px;
+      border-radius: 8px;
+      border: 2px solid #e0e0e0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      position: relative;
+    }
+
+    /* Línea decorativa estilo retro */
+    .cassette-label::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: linear-gradient(90deg, #ff758c, #ff7eb3, #4a90e2);
+      border-top-left-radius: 6px;
+      border-top-right-radius: 6px;
+    }
+
+    h1 {
+      color: #333;
+      font-size: 1.3rem;
+      margin: 5px 0 0 0;
+      width: 100%;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    .subtitle {
+      color: #666;
+      font-size: 0.95rem;
+      margin: -8px 0 0 0;
+      width: 100%;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    /* Ventana transparente con carretes de cinta */
+    .cassette-window {
+      background: #111;
+      width: 85%;
+      height: 55px;
+      border-radius: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 0 15px;
+      border: 2px solid #444;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Cinta magnética en el fondo de la ventana */
+    .cassette-window::after {
+      content: "";
+      position: absolute;
+      width: 40%;
+      height: 100%;
+      background: #3a2312;
+      z-index: 1;
+    }
+
+    /* Ruedas/Carretes del cassette */
+    .wheel {
+      width: 36px;
+      height: 36px;
+      background: #ffffff;
+      border-radius: 50%;
+      border: 4px solid #888;
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Dientes de la rueda interna */
+    .wheel::before {
+      content: "";
+      width: 12px;
+      height: 12px;
+      background: #2b2b2b;
+      border-radius: 50%;
+      box-shadow: inset 0 0 0 2px #fff;
+    }
+
+    /* Animación de giro para las ruedas al reproducir */
+    .spinning {
+      animation: spin 2.5s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Zona inferior trapezoidal típica de cassettes */
+    .cassette-bottom {
+      width: 70%;
+      height: 25px;
+      background: #202020;
+      margin-top: 10px;
+      clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .screw {
+      width: 6px;
+      height: 6px;
+      background: #777;
+      border-radius: 50%;
+    }
+
+    /* Texto de instrucción flotante */
+    .instruction {
+      font-size: 0.85rem;
+      color: #ff4757;
+      font-weight: 700;
+      margin: 5px 0 0 0;
+      animation: pulse 1.5s infinite;
+      text-align: center;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.5; }
+      50% { opacity: 1; }
+      100% { opacity: 0.5; }
+    }
+
+    audio {
+      width: 100%;
+      margin-top: 8px;
+      display: none;
+      pointer-events: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Estructura del Cassette -->
+  <div class="cassette">
+    <div class="cassette-label">
+      <h1>Para ti 🎶</h1>
+      <p class="subtitle">De parte de Evis 💙</p>
+      
+      <!-- Ventana transparente con carretes -->
+      <div class="cassette-window">
+        <div class="wheel" id="wheel1"></div>
+        <div class="wheel" id="wheel2"></div>
+      </div>
+
+      <p class="instruction" id="instructionText">✨ Toca en cualquier parte para reproducir ✨</p>
+    </div>
+
+    <!-- Base trapezoidal con tornillos decorativos -->
+    <div class="cassette-bottom">
+      <div class="screw"></div>
+      <div class="screw"></div>
+    </div>
+
+    <!-- Reproductor de audio oculto hasta tocar -->
+    <audio id="audioPlayer" controls>
+      <source src="audios/Evis.mp3" type="audio/mpeg">
+      Tu navegador no soporta el elemento de audio.
+    </audio>
+  </div>
+
+  <script>
+    const audio = document.getElementById('audioPlayer');
+    const instructionText = document.getElementById('instructionText');
+    const wheel1 = document.getElementById('wheel1');
+    const wheel2 = document.getElementById('wheel2');
+
+    function activarAudio() {
+      audio.play().then(() => {
+        instructionText.style.display = 'none';
+        audio.style.display = 'block';
+        
+        // Activa el giro de las ruedas del cassette
+        wheel1.classList.add('spinning');
+        wheel2.classList.add('spinning');
+        
+        document.removeEventListener('click', activarAudio);
+        document.removeEventListener('touchstart', activarAudio);
+      }).catch(error => {
+        console.log("Esperando interacción del usuario...", error);
+      });
+    }
+
+    // Si el usuario pausa o despausa el audio desde los controles del navegador
+    audio.addEventListener('play', () => {
+      wheel1.classList.add('spinning');
+      wheel2.classList.add('spinning');
+    });
+
+    audio.addEventListener('pause', () => {
+      wheel1.classList.remove('spinning');
+      wheel2.classList.remove('spinning');
+    });
+
+    document.addEventListener('click', activarAudio);
+    document.addEventListener('touchstart', activarAudio);
+  </script>
+
+</body>
+</html>
