@@ -26,7 +26,7 @@
       background-color: #fdf2f4; /* Color de respaldo suave */
       overflow: hidden;
     }
-    /* Capa exclusiva para el fondo de corazones[cite: 1] con opacidad ajustable */
+    /* Capa exclusiva para el fondo de corazones con opacidad ajustable */
     body::before {
       content: "";
       position: absolute;
@@ -38,7 +38,7 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      opacity: 0.3; /* 👈 AQUÍ PUEDES CAMBIAR LA OPACIDAD (0.1 es muy transparente, 1.0 es completamente opaco) */
+      opacity: 0.3;
       z-index: -1;
     }
     .card {
@@ -47,6 +47,7 @@
       border-radius: 20px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.1);
       max-width: 90%;
+      width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -71,13 +72,14 @@
       display: block;
       text-align: center !important;
     }
-   
     
     .instruction {
       font-size: 0.9rem;
       color: #007bff;
       font-weight: 600;
       animation: pulse 1.5s infinite;
+      width: 100%;
+      text-align: center;
     }
 
     @keyframes pulse {
@@ -98,7 +100,7 @@
 
   <div class="card">
     <h1>Para ti 🎶</h1>
-    <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; De parte de Evis &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; </p>
+    <p class="subtitle">De parte de Evis 💙</p>
     <p class="instruction" id="instructionText">✨ Toca para comenzar ✨</p>
     
     <!-- Reproductor de audio -->
