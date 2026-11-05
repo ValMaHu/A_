@@ -26,7 +26,6 @@
       overflow: hidden;
     }
 
-    /* Fondo de corazones con opacidad ajustable */
     body::before {
       content: "";
       position: absolute;
@@ -42,7 +41,6 @@
       z-index: -1;
     }
 
-    /* --- DISEÑO DE CASSETTE REALISTA --- */
     .cassette {
       background: linear-gradient(135deg, #2c2c2c, #1a1a1a);
       width: 100%;
@@ -57,7 +55,6 @@
       align-items: center;
     }
 
-    /* Tornillos en las esquinas */
     .screw {
       position: absolute;
       width: 10px;
@@ -71,7 +68,6 @@
     .screw-bl { bottom: 8px; left: 8px; }
     .screw-br { bottom: 8px; right: 8px; }
 
-    /* Etiqueta adhesiva central con tono crema/vintage estilo cassette */
     .cassette-label {
       background: #f4efe6;
       width: 100%;
@@ -86,7 +82,6 @@
       box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
     }
 
-    /* Franja superior decorativa */
     .cassette-label::before {
       content: "";
       position: absolute;
@@ -128,7 +123,6 @@
       font-weight: 600;
     }
 
-    /* Ventana del cassette con cinta magnética */
     .cassette-window {
       background: #0d0d0d;
       width: 90%;
@@ -144,7 +138,6 @@
       overflow: hidden;
     }
 
-    /* Franja de cinta magnética pasando por detrás */
     .tape-strip {
       position: absolute;
       width: 100%;
@@ -157,7 +150,6 @@
       border-bottom: 1px solid #20130a;
     }
 
-    /* Carretes detallados */
     .reel {
       width: 40px;
       height: 40px;
@@ -190,7 +182,6 @@
       border-radius: 50%;
     }
 
-    /* Animación de giro */
     .spinning {
       animation: spin 2s linear infinite;
     }
@@ -200,7 +191,6 @@
       100% { transform: rotate(360deg); }
     }
 
-    /* Zona inferior trapezoidal del cabezal */
     .cassette-bottom {
       width: 75%;
       height: 30px;
@@ -217,12 +207,11 @@
 
     .bottom-notch {
       width: 12px;
-      height: 8px;
+      height: 10px;
       background: #111;
       border-radius: 2px;
     }
 
-    /* Texto de instrucción */
     .instruction {
       font-size: 0.85rem;
       color: #d81b60;
@@ -250,7 +239,6 @@
 <body>
 
   <div class="cassette">
-    <!-- Tornillos decorativos -->
     <div class="screw screw-tl"></div>
     <div class="screw screw-tr"></div>
     <div class="screw screw-bl"></div>
@@ -264,9 +252,8 @@
       </div>
 
       <h1>Para ti 🎶</h1>
-      <p class="subtitle">De parte de Evis</p>
+      <p class="subtitle">De parte de Evis 💙</p>
       
-      <!-- Ventana transparente con cinta y carretes -->
       <div class="cassette-window">
         <div class="tape-strip"></div>
         <div class="reel" id="wheel1">
@@ -280,13 +267,11 @@
       <p class="instruction" id="instructionText">✨ Toca en cualquier parte para reproducir ✨</p>
     </div>
 
-    <!-- Base trapezoidal -->
     <div class="cassette-bottom">
       <div class="bottom-notch"></div>
       <div class="bottom-notch"></div>
     </div>
 
-    <!-- Reproductor de audio oculto -->
     <audio id="audioPlayer" controls>
       <source src="audios/Evis.mp3" type="audio/mpeg">
       Tu navegador no soporta el elemento de audio.
