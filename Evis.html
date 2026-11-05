@@ -17,16 +17,29 @@
       align-items: center;
       justify-content: center;
       min-height: 100vh;
-      /* Configuración de la imagen de fondo */
-      background-image: url('fondo.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       text-align: center;
       margin: 0;
       padding: 20px;
       cursor: pointer;
+      position: relative;
+      background-color: #fdf2f4; /* Color de respaldo suave */
+      overflow: hidden;
+    }
+    /* Capa exclusiva para el fondo de corazones[cite: 1] con opacidad ajustable */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('fondo.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.4; /* 👈 AQUÍ PUEDES CAMBIAR LA OPACIDAD (0.1 es muy transparente, 1.0 es completamente opaco) */
+      z-index: -1;
     }
     .card {
       background: white;
